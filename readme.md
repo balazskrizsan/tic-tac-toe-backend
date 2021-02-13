@@ -37,7 +37,7 @@
        starterPlayerId: 0|1
      }
   }
-- Every cell click will post the playerId and the fieldId to POST/v1/game/{gameId}/choose
+- Every cell click will post the playerId and the fieldId to POST/v1/game/{gameId}/choose-place
   Request:
   {
     playerId: \d+,
@@ -67,8 +67,10 @@
    generate class db structure from the table structure
    `start()` endpoint will write the time to the db and return the new auto increment id  
    Ok when: all test green
+- RevNum: 12cef815a0fcd852f95ef91a35052bd2144f8e8f
+   Complete with TDD the `GameService.startNewGame()`
 - RevNum:  
-  Complete with TDD the `GameService.startNewGame()`
- 
+   Create choose-place action with TDD
+
 
 
