@@ -9,7 +9,7 @@ import java.util.Date;
 @Service
 public class StateService
 {
-    public State getSessionState()
+    public State getState()
     {
         return new State(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
     }

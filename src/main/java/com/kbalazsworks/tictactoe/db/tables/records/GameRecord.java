@@ -21,7 +21,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class GameRecord extends UpdatableRecordImpl<GameRecord> implements Record3<Long, String, LocalDateTime> {
 
-    private static final long serialVersionUID = -33268442;
+    private static final long serialVersionUID = -1150741105;
 
     /**
      * Setter for <code>public.game.id</code>.
@@ -38,16 +38,16 @@ public class GameRecord extends UpdatableRecordImpl<GameRecord> implements Recor
     }
 
     /**
-     * Setter for <code>public.game.starer_user</code>.
+     * Setter for <code>public.game.starer_user_id</code>.
      */
-    public void setStarerUser(String value) {
+    public void setStarerUserId(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>public.game.starer_user</code>.
+     * Getter for <code>public.game.starer_user_id</code>.
      */
-    public String getStarerUser() {
+    public String getStarerUserId() {
         return (String) get(1);
     }
 
@@ -95,7 +95,7 @@ public class GameRecord extends UpdatableRecordImpl<GameRecord> implements Recor
 
     @Override
     public Field<String> field2() {
-        return Game.GAME.STARER_USER;
+        return Game.GAME.STARER_USER_ID;
     }
 
     @Override
@@ -110,7 +110,7 @@ public class GameRecord extends UpdatableRecordImpl<GameRecord> implements Recor
 
     @Override
     public String component2() {
-        return getStarerUser();
+        return getStarerUserId();
     }
 
     @Override
@@ -125,7 +125,7 @@ public class GameRecord extends UpdatableRecordImpl<GameRecord> implements Recor
 
     @Override
     public String value2() {
-        return getStarerUser();
+        return getStarerUserId();
     }
 
     @Override
@@ -141,7 +141,7 @@ public class GameRecord extends UpdatableRecordImpl<GameRecord> implements Recor
 
     @Override
     public GameRecord value2(String value) {
-        setStarerUser(value);
+        setStarerUserId(value);
         return this;
     }
 
@@ -173,11 +173,11 @@ public class GameRecord extends UpdatableRecordImpl<GameRecord> implements Recor
     /**
      * Create a detached, initialised GameRecord
      */
-    public GameRecord(Long id, String starerUser, LocalDateTime createdAt) {
+    public GameRecord(Long id, String starerUserId, LocalDateTime createdAt) {
         super(Game.GAME);
 
         set(0, id);
-        set(1, starerUser);
+        set(1, starerUserId);
         set(2, createdAt);
     }
 }

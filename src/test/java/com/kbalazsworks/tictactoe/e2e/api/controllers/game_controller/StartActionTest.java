@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -33,7 +34,7 @@ public class StartActionTest extends AbstractE2eTest
         int           expectedErrorCode  = 0;
 
         Game mockedNewGame = new GameFakeBuilder().build();
-        when(gameService.startNewGame()).thenReturn(mockedNewGame);
+        when(gameService.startNewGame(any())).thenReturn(mockedNewGame);
 
         // Act
         ResultActions result = getMockMvc().perform(
@@ -48,7 +49,7 @@ public class StartActionTest extends AbstractE2eTest
             .andExpect(expectedStatusCode)
             .andExpect(jsonPath("$.errorCode").value(expectedErrorCode))
             .andExpect(jsonPath("$.data.id").value(expectedData.id()))
-            .andExpect(jsonPath("$.data.starerUser").value(expectedData.starerUser()))
+            .andExpect(jsonPath("$.data.starerUserId").value(expectedData.starerUserId()))
             .andExpect(jsonPath("$.data.createdAt").value(expectedData.createdAt().toString()));
     }
 }

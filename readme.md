@@ -57,7 +57,8 @@
 ## Development steps in bullet points:
 
 - Setup local env: IDEA / Local db / OpenJDK 15
-- `GET/v1/game/start` endpoint: e2e test for the controller  
+- RevNum: 135b30082f44715587bd8d2c8ac204e7228e2463  
+   `GET/v1/game/start` endpoint: e2e test for the controller  
    create controller  
    integration test for game service  
    create the game `service.start()`  
@@ -66,7 +67,8 @@
    generate class db structure from the table structure
    `start()` endpoint will write the time to the db and return the new auto increment id  
    Ok when: all test green
- 
+- RevNum:  
+  Complete with TDD the `GameService.startNewGame()`
  
 
 

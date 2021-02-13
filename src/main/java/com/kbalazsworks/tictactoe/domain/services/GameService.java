@@ -2,10 +2,9 @@ package com.kbalazsworks.tictactoe.domain.services;
 
 import com.kbalazsworks.tictactoe.domain.entities.Game;
 import com.kbalazsworks.tictactoe.domain.repositories.GameRepository;
+import com.kbalazsworks.tictactoe.state.entities.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @Service
 public class GameService
@@ -13,13 +12,17 @@ public class GameService
     private GameRepository gameRepository;
 
     @Autowired
-    public void setReviewRepository(GameRepository gameRepository)
+    public void setGameRepository(GameRepository gameRepository)
     {
         this.gameRepository = gameRepository;
     }
 
-    public Game startNewGame()
+    public Game startNewGame(State state)
     {
-        return new Game(1L, "X", LocalDateTime.now());
+        String starerUserId = (int) (Math.random() * 2) == 1 ? "X" : "Y";
+
+        Long newGameId = gameRepository.create(new Game(null, starerUserId, state.getNow()));
+
+        return new Game(newGameId, starerUserId, state.getNow());
     }
 }

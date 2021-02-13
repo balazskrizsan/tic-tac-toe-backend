@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public record Game(
     @JsonProperty Long id,
-    @JsonProperty String starerUser,
+    @JsonProperty String starerUserId,
     @JsonProperty LocalDateTime createdAt
 )
 {
