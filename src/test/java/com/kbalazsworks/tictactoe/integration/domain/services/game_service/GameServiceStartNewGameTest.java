@@ -34,7 +34,7 @@ public class GameServiceStartNewGameTest extends AbstractIntegrationTest
         // Assert
         assertAll(
             () -> assertThat(actualGame.id()).isEqualTo(expectedUserId),
-            () -> assertThat(actualGame.starerUserId()).matches(expectedStarterUserId),
+            () -> assertThat(actualGame.starterUserId()).matches(expectedStarterUserId),
             () -> assertThat(actualGame.createdAt()).isEqualTo(expectedCreatedAt)
         );
     }

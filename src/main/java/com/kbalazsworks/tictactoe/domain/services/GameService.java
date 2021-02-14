@@ -19,7 +19,7 @@ public class GameService
 
     public Game startNewGame(State state)
     {
-        String starerUserId = (int) (Math.random() * 2) == 1 ? "X" : "Y";
+        String starerUserId = (int) (Math.random() * 2) == 1 ? "X" : "O";
 
         Long newGameId = gameRepository.create(new Game(null, starerUserId, state.getNow()));
 

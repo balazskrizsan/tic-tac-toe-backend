@@ -17,7 +17,7 @@ public class GameRepository extends AbstractRepository
                 gameTable.STARER_USER_ID,
                 gameTable.CREATED_AT
             )
-            .values(game.starerUserId(), game.createdAt())
+            .values(game.starterUserId(), game.createdAt())
             .returningResult(gameTable.ID)
             .fetchOne()
             .getValue(gameTable.ID);
