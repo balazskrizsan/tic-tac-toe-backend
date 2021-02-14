@@ -24,7 +24,7 @@ public class GameServiceStartNewGameTest extends AbstractIntegrationTest
     {
         // Arrange
         long          expectedUserId        = 1;
-        String        expectedStarterUserId = "^[X|Y]$";
+        String        expectedStarterUserId = "^[X|O]$";
         LocalDateTime expectedCreatedAt     = MockFactory.stateMock.getNow();
 
         // Act

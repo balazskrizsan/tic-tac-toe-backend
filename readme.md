@@ -85,11 +85,13 @@
    Complete with TDD the `GameService.startNewGame()`
 - RevNum:  b1dea9c5162d1f6934e45e7a920c213e09916d20  
    Create choose-place action with TDD
-- RevNum:  
+- RevNum:  805b6d45942d72a2c5a4b3a1802b2abc852c17c2  
   Complete with TDD the `GameService.choosePlace()`
     - Save the current sent state
     - Check end game
     - Send back the next player
     - Send back the current table state
-
+- RevNum:  
+  Working application first test from postman - should be perfect! :)
+  - HTTP level error fixes
 

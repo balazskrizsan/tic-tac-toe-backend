@@ -5,7 +5,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
 public record ChoosePlaceCreateRequest(
-    @Pattern(regexp = "^[X|Y]$")
+    @Pattern(regexp = "^[X|O]$")
     String playerId,
 
     @Min(1)

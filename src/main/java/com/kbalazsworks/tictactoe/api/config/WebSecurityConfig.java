@@ -24,6 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
             .authorizeRequests()
 
             .antMatchers(HttpMethod.GET, GameConfig.CONTROLLER_URI_V1 + GameConfig.START_SECURITY_PATH).permitAll()
+            .antMatchers(HttpMethod.POST, GameConfig.CONTROLLER_URI_V1 + GameConfig.CHOOSE_PLACE_SECURITY_PATH).permitAll()
 
             .anyRequest().authenticated();
         // @formatter:on
