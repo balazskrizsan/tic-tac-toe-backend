@@ -23,8 +23,12 @@
 - Displayed randomly who starts: X/O
 - Every square is clickable once
 - Win: same sign 3-in-a-row
-- Draw: all squares cliecked and not 3-in-a-row
+- Tie: all squares cliecked and no 3-in-a-row
 - Restart button (if there will be time)
+- Game place ids:
+    1 | 2 | 3
+    4 | 5 | 6 
+    7 | 8 | 9
 ```
 ##### Code logic
 ```
@@ -46,10 +50,20 @@
   Response:
   {
     data: {
-       finished: 0|1,
-       winer: 0|1|2|null,
-       nextPlayerId: 0|1|null,
-       currentGameState: [1, 0, null, null, 1, 0, null, null, 1]
+      finished: 0|1,
+      winer: X|O|tie|null,
+      nextPlayerId: 0|1|null,
+      currentGameStatePlace: {
+        "1": X|Y|-,
+        "2": X|Y|-,
+        "3": X|Y|-,
+        "4": X|Y|-,
+        "5": X|Y|-,
+        "6": X|Y|-,
+        "7": X|Y|-,
+        "8": X|Y|-,
+        "9": X|Y|-
+      }
     }
   }
 ```
@@ -67,10 +81,15 @@
    generate class db structure from the table structure
    `start()` endpoint will write the time to the db and return the new auto increment id  
    Ok when: all test green
-- RevNum: 12cef815a0fcd852f95ef91a35052bd2144f8e8f
+- RevNum: 12cef815a0fcd852f95ef91a35052bd2144f8e8f  
    Complete with TDD the `GameService.startNewGame()`
-- RevNum:  
+- RevNum:  b1dea9c5162d1f6934e45e7a920c213e09916d20  
    Create choose-place action with TDD
-
+- RevNum:  
+  Complete with TDD the `GameService.choosePlace()`
+    - Save the current sent state
+    - Check end game
+    - Send back the next player
+    - Send back the current table state
 
 

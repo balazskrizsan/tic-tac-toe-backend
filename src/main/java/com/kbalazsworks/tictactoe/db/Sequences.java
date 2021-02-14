@@ -18,4 +18,9 @@ public class Sequences {
      * The sequence <code>public.game_id_seq</code>
      */
     public static final Sequence<Long> GAME_ID_SEQ = Internal.createSequence("game_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false), null, null, null, null, false, null);
+
+    /**
+     * The sequence <code>public.game_state_id_seq</code>
+     */
+    public static final Sequence<Long> GAME_STATE_ID_SEQ = Internal.createSequence("game_state_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false), null, null, null, null, false, null);
 }

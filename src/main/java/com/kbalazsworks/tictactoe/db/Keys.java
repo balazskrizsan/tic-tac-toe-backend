@@ -6,9 +6,12 @@ package com.kbalazsworks.tictactoe.db;
 
 import com.kbalazsworks.tictactoe.db.tables.FlywaySchemaHistory;
 import com.kbalazsworks.tictactoe.db.tables.Game;
+import com.kbalazsworks.tictactoe.db.tables.GameState;
 import com.kbalazsworks.tictactoe.db.tables.records.FlywaySchemaHistoryRecord;
 import com.kbalazsworks.tictactoe.db.tables.records.GameRecord;
+import com.kbalazsworks.tictactoe.db.tables.records.GameStateRecord;
 
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
@@ -27,6 +30,7 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final Identity<GameRecord, Long> IDENTITY_GAME = Identities0.IDENTITY_GAME;
+    public static final Identity<GameStateRecord, Long> IDENTITY_GAME_STATE = Identities0.IDENTITY_GAME_STATE;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
@@ -34,11 +38,13 @@ public class Keys {
 
     public static final UniqueKey<FlywaySchemaHistoryRecord> FLYWAY_SCHEMA_HISTORY_PK = UniqueKeys0.FLYWAY_SCHEMA_HISTORY_PK;
     public static final UniqueKey<GameRecord> GAME_PK = UniqueKeys0.GAME_PK;
+    public static final UniqueKey<GameStateRecord> GAME_STATE_PK = UniqueKeys0.GAME_STATE_PK;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<GameStateRecord, GameRecord> GAME_STATE__FK__GAME_STATE_GAME_ID__GAME_ID__ON_DELETE_CASCADE = ForeignKeys0.GAME_STATE__FK__GAME_STATE_GAME_ID__GAME_ID__ON_DELETE_CASCADE;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -46,10 +52,16 @@ public class Keys {
 
     private static class Identities0 {
         public static Identity<GameRecord, Long> IDENTITY_GAME = Internal.createIdentity(Game.GAME, Game.GAME.ID);
+        public static Identity<GameStateRecord, Long> IDENTITY_GAME_STATE = Internal.createIdentity(GameState.GAME_STATE, GameState.GAME_STATE.ID);
     }
 
     private static class UniqueKeys0 {
         public static final UniqueKey<FlywaySchemaHistoryRecord> FLYWAY_SCHEMA_HISTORY_PK = Internal.createUniqueKey(FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, "flyway_schema_history_pk", new TableField[] { FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.INSTALLED_RANK }, true);
         public static final UniqueKey<GameRecord> GAME_PK = Internal.createUniqueKey(Game.GAME, "game_pk", new TableField[] { Game.GAME.ID }, true);
+        public static final UniqueKey<GameStateRecord> GAME_STATE_PK = Internal.createUniqueKey(GameState.GAME_STATE, "game_state_pk", new TableField[] { GameState.GAME_STATE.ID }, true);
+    }
+
+    private static class ForeignKeys0 {
+        public static final ForeignKey<GameStateRecord, GameRecord> GAME_STATE__FK__GAME_STATE_GAME_ID__GAME_ID__ON_DELETE_CASCADE = Internal.createForeignKey(Keys.GAME_PK, GameState.GAME_STATE, "fk__game_state_game_id__game_id__on_delete_cascade", new TableField[] { GameState.GAME_STATE.GAME_ID }, true);
     }
 }

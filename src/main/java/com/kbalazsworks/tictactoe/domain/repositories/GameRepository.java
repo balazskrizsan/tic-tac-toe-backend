@@ -11,7 +11,7 @@ public class GameRepository extends AbstractRepository
 
     public Long create(Game game)
     {
-        return createQueryBuilder()
+        return getQueryBuilder()
             .insertInto(
                 gameTable,
                 gameTable.STARER_USER_ID,

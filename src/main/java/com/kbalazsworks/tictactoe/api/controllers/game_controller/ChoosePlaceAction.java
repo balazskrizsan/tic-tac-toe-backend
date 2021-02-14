@@ -5,7 +5,7 @@ import com.kbalazsworks.tictactoe.api.requests.game_requests.ChoosePlaceCreateRe
 import com.kbalazsworks.tictactoe.api.services.JavaxValidatorService;
 import com.kbalazsworks.tictactoe.api.services.RequestMapperService;
 import com.kbalazsworks.tictactoe.api.value_objects.ResponseData;
-import com.kbalazsworks.tictactoe.domain.services.GameService;
+import com.kbalazsworks.tictactoe.domain.services.GameStateService;
 import com.kbalazsworks.tictactoe.domain.value_objects.ActiveGameState;
 import com.kbalazsworks.tictactoe.state.services.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(GameConfig.CONTROLLER_URI_V1)
 public class ChoosePlaceAction
 {
-    private GameService  gameService;
-    private StateService stateService;
+    private GameStateService gameStateService;
+    private StateService     stateService;
 
     @Autowired
-    public void setGameService(GameService gameService)
+    public void setGameStateService(GameStateService gameStateService)
     {
-        this.gameService = gameService;
+        this.gameStateService = gameStateService;
     }
 
     @Autowired
@@ -45,7 +45,7 @@ public class ChoosePlaceAction
 
         return new ResponseEntityBuilder<ActiveGameState>()
             .setData(
-                gameService.choosePlace(
+                gameStateService.choosePlace(
                     RequestMapperService.mapToEntity(
                         gameId,
                         request,

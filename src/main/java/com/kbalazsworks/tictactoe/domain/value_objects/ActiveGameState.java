@@ -6,9 +6,9 @@ import java.util.Map;
 
 public record ActiveGameState(
     @JsonProperty boolean finished,
-    @JsonProperty Integer winner,
+    @JsonProperty String winner,
     @JsonProperty String nextPlayerId,
-    @JsonProperty Map<Integer, String> currentGameState
+    @JsonProperty Map<Integer, String> currentGameStatePlace
 )
 {
 }

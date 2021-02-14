@@ -4,7 +4,7 @@ import com.kbalazsworks.tictactoe.AbstractE2eTest;
 import com.kbalazsworks.tictactoe.MockFactory;
 import com.kbalazsworks.tictactoe.annotations.TruncateAllTables;
 import com.kbalazsworks.tictactoe.domain.entities.GameState;
-import com.kbalazsworks.tictactoe.domain.services.GameService;
+import com.kbalazsworks.tictactoe.domain.services.GameStateService;
 import com.kbalazsworks.tictactoe.domain.value_objects.ActiveGameState;
 import com.kbalazsworks.tictactoe.fake_builders.GameFakeBuilder;
 import com.kbalazsworks.tictactoe.fake_builders.GameStateFakeBuilder;
@@ -22,14 +22,13 @@ import java.util.Map;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class GameControllerChoosePlaceActionTest extends AbstractE2eTest
 {
     @MockBean
-    private GameService gameService;
+    private GameStateService gameStateService;
 
     @MockBean
     private StateService stateService;
@@ -53,7 +52,7 @@ public class GameControllerChoosePlaceActionTest extends AbstractE2eTest
         ActiveGameState expectedResponseData = new ActiveGameState(false, null, "X", Map.of(1, "X"));
         int             expectedErrorCode    = 0;
 
-        when(gameService.choosePlace(expectedGameState))
+        when(gameStateService.choosePlace(expectedGameState))
             .thenReturn(new ActiveGameState(false, null, "X", Map.of(1, "X")));
 
         // Act
@@ -65,10 +64,8 @@ public class GameControllerChoosePlaceActionTest extends AbstractE2eTest
                 .accept(MediaType.APPLICATION_JSON)
         );
 
-        System.out.println(expectedResponseData.currentGameState());
-
         // Assert
-        verify(gameService).choosePlace(expectedGameState);
+        verify(gameStateService).choosePlace(expectedGameState);
 
         result
             .andExpect(expectedStatusCode)

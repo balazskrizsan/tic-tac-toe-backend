@@ -6,6 +6,7 @@ package com.kbalazsworks.tictactoe.db;
 
 import com.kbalazsworks.tictactoe.db.tables.FlywaySchemaHistory;
 import com.kbalazsworks.tictactoe.db.tables.Game;
+import com.kbalazsworks.tictactoe.db.tables.GameState;
 
 
 /**
@@ -23,4 +24,9 @@ public class Tables {
      * The table <code>public.game</code>.
      */
     public static final Game GAME = Game.GAME;
+
+    /**
+     * The table <code>public.game_state</code>.
+     */
+    public static final GameState GAME_STATE = GameState.GAME_STATE;
 }

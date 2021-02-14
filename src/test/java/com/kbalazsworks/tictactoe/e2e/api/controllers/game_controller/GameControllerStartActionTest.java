@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class StartActionTest extends AbstractE2eTest
+public class GameControllerStartActionTest extends AbstractE2eTest
 {
     @MockBean
     private GameService gameService;

@@ -6,6 +6,7 @@ package com.kbalazsworks.tictactoe.db;
 
 import com.kbalazsworks.tictactoe.db.tables.FlywaySchemaHistory;
 import com.kbalazsworks.tictactoe.db.tables.Game;
+import com.kbalazsworks.tictactoe.db.tables.GameState;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +23,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 1208384642;
+    private static final long serialVersionUID = 1179247336;
 
     /**
      * The reference instance of <code>public</code>
@@ -40,6 +41,11 @@ public class Public extends SchemaImpl {
     public final Game GAME = Game.GAME;
 
     /**
+     * The table <code>public.game_state</code>.
+     */
+    public final GameState GAME_STATE = GameState.GAME_STATE;
+
+    /**
      * No further instances allowed
      */
     private Public() {
@@ -55,13 +61,15 @@ public class Public extends SchemaImpl {
     @Override
     public final List<Sequence<?>> getSequences() {
         return Arrays.<Sequence<?>>asList(
-            Sequences.GAME_ID_SEQ);
+            Sequences.GAME_ID_SEQ,
+            Sequences.GAME_STATE_ID_SEQ);
     }
 
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
             FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY,
-            Game.GAME);
+            Game.GAME,
+            GameState.GAME_STATE);
     }
 }

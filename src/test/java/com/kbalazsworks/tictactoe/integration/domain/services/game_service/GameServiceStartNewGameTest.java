@@ -29,6 +29,7 @@ public class GameServiceStartNewGameTest extends AbstractIntegrationTest
 
         // Act
         Game actualGame = gameService.startNewGame(MockFactory.stateMock);
+        //@todo: check if all field inserted in sql
 
         // Assert
         assertAll(
