@@ -13,7 +13,7 @@ import org.springframework.util.MultiValueMap;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class FullGameFlow extends AbstractE2eTest
+public class FullGameFlowTest extends AbstractE2eTest
 {
     @Test
     @TruncateAllTables
