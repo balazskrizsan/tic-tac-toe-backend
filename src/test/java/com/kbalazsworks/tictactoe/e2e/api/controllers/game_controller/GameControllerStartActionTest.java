@@ -49,7 +49,6 @@ public class GameControllerStartActionTest extends AbstractE2eTest
             .andExpect(expectedStatusCode)
             .andExpect(jsonPath("$.errorCode").value(expectedErrorCode))
             .andExpect(jsonPath("$.data.id").value(expectedData.id()))
-            .andExpect(jsonPath("$.data.starterUserId").value(expectedData.starterUserId()))
-            .andExpect(jsonPath("$.data.createdAt").value(expectedData.createdAt().toString()));
+            .andExpect(jsonPath("$.data.starterUserId").value(expectedData.starterUserId()));
     }
 }
